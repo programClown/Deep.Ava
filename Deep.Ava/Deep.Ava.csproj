@@ -22,13 +22,15 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1"/>
-        <PackageReference Include="Irihi.Ursa" Version="1.8.0" />
-        <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.8.0" />
-        <PackageReference Include="Semi.Avalonia" Version="11.2.1.4" />
-        <PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.4" />
+        <PackageReference Include="Irihi.Ursa" Version="1.8.0"/>
+        <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.8.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1"/>
+        <PackageReference Include="Semi.Avalonia" Version="11.2.1.4"/>
+        <PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.4"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Deep.Navigation.Avaloniaui\Deep.Navigation.Avaloniaui.csproj" />
+        <ProjectReference Include="..\Deep.Navigation.Avaloniaui\Deep.Navigation.Avaloniaui.csproj"/>
     </ItemGroup>
 </Project>
