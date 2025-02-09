@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Ava", "Deep.Ava\Deep.Ava.csproj", "{6681B8E0-84E2-4CDE-B4E6-74700F0F5218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Navigation", "Deep.Navigation\Deep.Navigation.csproj", "{93F26033-F250-4FE9-95E2-AC7FEAF12B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Navigation.Avaloniaui", "Deep.Navigation.Avaloniaui\Deep.Navigation.Avaloniaui.csproj", "{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6681B8E0-84E2-4CDE-B4E6-74700F0F5218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6681B8E0-84E2-4CDE-B4E6-74700F0F5218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6681B8E0-84E2-4CDE-B4E6-74700F0F5218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6681B8E0-84E2-4CDE-B4E6-74700F0F5218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93F26033-F250-4FE9-95E2-AC7FEAF12B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F26033-F250-4FE9-95E2-AC7FEAF12B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F26033-F250-4FE9-95E2-AC7FEAF12B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F26033-F250-4FE9-95E2-AC7FEAF12B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

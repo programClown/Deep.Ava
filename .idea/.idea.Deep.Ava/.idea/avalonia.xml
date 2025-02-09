@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Deep.Ava/App.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/MainWindow.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Navigation.Avaloniaui/Dialogs/DefaultDialogWindow.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
