@@ -4,7 +4,9 @@
     <option name="projectPerEditor">
       <map>
         <entry key="Deep.Ava/App.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/MainView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
         <entry key="Deep.Ava/Views/MainWindow.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/TitleBarRightContent.axaml" value="Deep.Ava/Deep.Ava.csproj" />
         <entry key="Deep.Navigation.Avaloniaui/Dialogs/DefaultDialogWindow.axaml" value="Deep.Ava/Deep.Ava.csproj" />
       </map>
     </option>

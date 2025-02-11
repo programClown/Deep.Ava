@@ -41,7 +41,13 @@ public class App : Application
             window.DataContext = viewModel;
             desktop.MainWindow = window;
         }
-
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+        {
+            var view = AppServiceProvider.GetRequiredService<MainView>();    
+            view.DataContext = viewModel;
+            singleView.MainView = view;
+        }
+        
         base.OnFrameworkInitializationCompleted();
     }
 
