@@ -4,6 +4,7 @@ using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Avalonia;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
+using System;
 
 namespace Deep.Ava.ViewModels;
 
@@ -32,7 +33,7 @@ public partial class ChartViewModel : ViewModelBase
     partial void OnSelectedItemChanged(string? value)
     {
         if (value == null) return;
-
+        
         ChartPage = value switch
         {
             "散点图" => new CartesianChart
@@ -59,8 +60,7 @@ public partial class ChartViewModel : ViewModelBase
                     Stroke = new SolidColorPaint(new SKColor(180, 180, 180), 1)
                 }
             },
-
-            //
+            
             // "面积图" => new AreaChartView(),
             // "饼图" => new PieChartView(),
             // "动态波" => new WaveChartView(),

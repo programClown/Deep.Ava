@@ -1,9 +1,12 @@
 using System;
 using System.Linq;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
+using Avalonia.Input.Platform;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
 using Deep.Ava.ViewModels;
 using Deep.Ava.Views;
 using Deep.Navigation.Avaloniaui.Extensions;
@@ -11,13 +14,21 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using Microsoft.Extensions.DependencyInjection;
 using SkiaSharp;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Deep.Ava;
 
 public class App : Application
 {
     public IServiceProvider? AppServiceProvider { get; private set; }
+    
+    [NotNull]
+    public static Visual? VisualRoot { get; internal set; }
+    public static IStorageProvider? StorageProvider { get; internal set; }
+    public static TopLevel TopLevel => TopLevel.GetTopLevel(VisualRoot)!;
 
+    [NotNull]
+    public static IClipboard? Clipboard { get; internal set; }
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -46,12 +57,20 @@ public class App : Application
             var window = AppServiceProvider.GetRequiredService<MainWindow>();
             window.DataContext = viewModel;
             desktop.MainWindow = window;
+            
+            VisualRoot = window;
+            StorageProvider = window.StorageProvider;
+            Clipboard = window.Clipboard ?? throw new NullReferenceException("Clipboard is null");
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
         {
             var view = AppServiceProvider.GetRequiredService<MainView>();
             view.DataContext = viewModel;
             singleView.MainView = view;
+            
+            VisualRoot = view.Parent as MainWindow;
+            StorageProvider = (view.Parent as MainWindow)?.StorageProvider;
+            Clipboard = (view.Parent as MainWindow)?.Clipboard?? throw new NullReferenceException("Clipboard is null");
         }
 
         base.OnFrameworkInitializationCompleted();
