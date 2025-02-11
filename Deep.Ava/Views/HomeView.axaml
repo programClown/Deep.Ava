@@ -1,0 +1,54 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Deep.Ava.Views.HomeView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid ColumnDefinitions="Auto,*">
+        <u:ImageViewer MinScale="0.5" Source="/Assets/gaishiyingxiong.jpg" />
+        <u:Timeline
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Mode="Alternate">
+            <u:TimelineItem
+                Content="起手式"
+                Header="第一步"
+                Position="Left"
+                Time="2022-01-01"
+                TimeFormat="yyyy-MM-dd"
+                Type="Default" />
+            <u:TimelineItem
+                Content="破剑式"
+                Header="第二步"
+                Position="Right"
+                Time="2022-01-02"
+                TimeFormat="yyyy-MM-dd"
+                Type="Success" />
+            <u:TimelineItem
+                Content="求饶式"
+                Header="第三步"
+                Position="Separate"
+                Time="2022-01-03"
+                TimeFormat="yyyy-MM-dd"
+                Type="Warning" />
+            <u:TimelineItem
+                Content="跪舔式"
+                Header="第四步"
+                Position="Separate"
+                Time="2022-01-04"
+                TimeFormat="yyyy-MM-dd"
+                Type="Ongoing" />
+            <u:TimelineItem
+                Content="无敌"
+                Header="第五步"
+                Position="Separate"
+                Time="2022-01-05"
+                TimeFormat="yyyy-MM-dd"
+                Type="Error" />
+        </u:Timeline>
+    </Grid>
+</UserControl>

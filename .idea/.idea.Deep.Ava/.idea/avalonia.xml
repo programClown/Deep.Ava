@@ -4,8 +4,14 @@
     <option name="projectPerEditor">
       <map>
         <entry key="Deep.Ava/App.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Pages/Charts/LineChart.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/ChartView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/HomeView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
         <entry key="Deep.Ava/Views/MainView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
         <entry key="Deep.Ava/Views/MainWindow.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/SciView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/SettingView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
+        <entry key="Deep.Ava/Views/ShellView.axaml" value="Deep.Ava/Deep.Ava.csproj" />
         <entry key="Deep.Ava/Views/TitleBarRightContent.axaml" value="Deep.Ava/Deep.Ava.csproj" />
         <entry key="Deep.Navigation.Avaloniaui/Dialogs/DefaultDialogWindow.axaml" value="Deep.Ava/Deep.Ava.csproj" />
       </map>

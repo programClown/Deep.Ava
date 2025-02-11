@@ -1,0 +1,60 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Deep.Ava.Views.ChartView"
+    x:DataType="vm:ChartViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid ColumnDefinitions="120,Auto">
+        <StackPanel HorizontalAlignment="Left">
+            <u:SelectionList ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+                <u:SelectionList.Indicator>
+                    <Border Background="Transparent" CornerRadius="4">
+                        <Border
+                            Background="{DynamicResource SemiBlue6}"
+                            CornerRadius="4"
+                            HorizontalAlignment="Left"
+                            Margin="0,8"
+                            VerticalAlignment="Stretch"
+                            Width="4" />
+                    </Border>
+                </u:SelectionList.Indicator>
+                <u:SelectionList.ItemTemplate>
+                    <DataTemplate>
+                        <Panel Height="40">
+                            <TextBlock
+                                Classes.Active="{Binding $parent[u:SelectionListItem].IsSelected, Mode=OneWay}"
+                                Margin="8,0"
+                                Text="{Binding}"
+                                VerticalAlignment="Center">
+                                <TextBlock.Styles>
+                                    <Style Selector="TextBlock.Active">
+                                        <Setter Property="Foreground" Value="{DynamicResource SemiOrange6}" />
+                                    </Style>
+                                </TextBlock.Styles>
+                            </TextBlock>
+                        </Panel>
+                    </DataTemplate>
+                </u:SelectionList.ItemTemplate>
+            </u:SelectionList>
+        </StackPanel>
+
+        <TransitioningContentControl Content="{Binding ChartPage}" Grid.Column="1">
+            <TransitioningContentControl.PageTransition>
+                <CompositePageTransition>
+                    <CrossFade Duration="0:0:0.5" />
+                    <PageSlide
+                        Duration="0:0:0.3"
+                        Orientation="Horizontal"
+                        SlideInEasing="QuadraticEaseIn"
+                        SlideOutEasing="QuadraticEaseOut" />
+                </CompositePageTransition>
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
+    </Grid>
+</UserControl>

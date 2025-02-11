@@ -4,6 +4,8 @@
     IsManagedResizerVisible="{OnPlatform False,
                                          Linux=True}"
     Title="Deep.Ava"
+    TitleBarMargin="{OnPlatform 0,
+                                macOS=70 0 0 0}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d"

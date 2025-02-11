@@ -58,7 +58,7 @@
 
                 <u:SelectionList.Indicator>
                     <Border
-                        Background="{StaticResource ToggleButtonPrimaryCheckedBackground}"
+                        Background="{DynamicResource SemiColorFocusBorder}"
                         BoxShadow="0 0 10 0 LightGray"
                         CornerRadius="8">
                         <Border.Transitions>
@@ -83,14 +83,14 @@
                 </StackPanel>
                 <StackPanel>
                     <PathIcon Data="{StaticResource SemiIconKanban}" />
-                    <TextBlock Text="统计" />
+                    <TextBlock Text="科学" />
                 </StackPanel>
             </u:SelectionList>
             <u:SelectionList Grid.Row="1" SelectedItem="{Binding NavigationFooterSelectedItem}">
 
                 <u:SelectionList.Indicator>
                     <Border
-                        Background="{StaticResource ToggleButtonPrimaryCheckedBackground}"
+                        Background="{StaticResource SemiColorFocusBorder}"
                         BoxShadow="0 0 10 0 LightGray"
                         CornerRadius="8">
                         <Border.Transitions>
