@@ -2,7 +2,6 @@
     RequestedThemeVariant="Default"
     x:Class="Deep.Ava.App"
     xmlns="https://github.com/avaloniaui"
-    xmlns:local="using:Deep.Ava"
     xmlns:semi="https://irihi.tech/semi"
     xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -13,5 +12,6 @@
         <semi:SemiPopupAnimations />
         <u-semi:SemiTheme Locale="zh-CN" />
         <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
+        <StyleInclude Source="Styles/Index.axaml" />
     </Application.Styles>
 </Application>
