@@ -3,9 +3,72 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Class="Deep.Ava.Views.SciView"
+    x:DataType="vm:SciViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:converters="clr-namespace:Deep.Ava.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <UniformGrid />
+    <UserControl.Resources>
+        <converters:IconNameToPathConverter x:Key="IconConverter" />
+    </UserControl.Resources>
+    <Border
+        HorizontalAlignment="Left"
+        Padding="0"
+        Theme="{DynamicResource CardBorder}">
+        <u:NavMenu
+            ExpandWidth="400"
+            HeaderBinding="{Binding Header}"
+            IconBinding="{Binding IconIndex}"
+            ItemsSource="{Binding MenuItems}"
+            Name="menu"
+            SelectedItem="{Binding SelectedMenuItem}"
+            SubMenuBinding="{Binding Children}">
+            <u:NavMenu.Styles>
+                <Style Selector="u|NavMenuItem" x:DataType="vm:MenuItem">
+                    <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
+                </Style>
+            </u:NavMenu.Styles>
+            <u:NavMenu.IconTemplate>
+                <DataTemplate DataType="{x:Type x:Int32}">
+                    <u:TwoTonePathIcon
+                        ActiveForeground="{DynamicResource SemiBlue5}"
+                        ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                        Data="{Binding Converter={StaticResource IconConverter}}"
+                        Foreground="{DynamicResource SemiGrey5}"
+                        Height="16"
+                        IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
+                        StrokeBrush="{DynamicResource SemiGrey5}"
+                        Width="16" />
+                </DataTemplate>
+            </u:NavMenu.IconTemplate>
+            <u:NavMenu.Header>
+                <Grid ColumnDefinitions="Auto, Auto" HorizontalAlignment="Center">
+                    <Image
+                        Height="48"
+                        Margin="4,12"
+                        RenderOptions.BitmapInterpolationMode="HighQuality"
+                        Source="/Assets/logo.ico"
+                        Width="48"
+                        u:NavMenu.CanToggle="True" />
+                    <TextBlock
+                        Classes="H5"
+                        Grid.Column="1"
+                        IsVisible="{Binding !#menu.IsHorizontalCollapsed}"
+                        Text="学以致用"
+                        Theme="{DynamicResource TitleTextBlock}"
+                        VerticalAlignment="Center" />
+                </Grid>
+            </u:NavMenu.Header>
+            <u:NavMenu.Footer>
+                <TextBlock
+                    Classes="H1"
+                    Margin="12,0"
+                    Text="© 2025"
+                    Theme="{DynamicResource CaptionTextBlock}" />
+            </u:NavMenu.Footer>
+        </u:NavMenu>
+    </Border>
 </UserControl>

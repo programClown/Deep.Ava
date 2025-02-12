@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -14,21 +15,20 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using Microsoft.Extensions.DependencyInjection;
 using SkiaSharp;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Deep.Ava;
 
 public class App : Application
 {
     public IServiceProvider? AppServiceProvider { get; private set; }
-    
-    [NotNull]
-    public static Visual? VisualRoot { get; internal set; }
+
+    [NotNull] public static Visual? VisualRoot { get; internal set; }
+
     public static IStorageProvider? StorageProvider { get; internal set; }
     public static TopLevel TopLevel => TopLevel.GetTopLevel(VisualRoot)!;
 
-    [NotNull]
-    public static IClipboard? Clipboard { get; internal set; }
+    [NotNull] public static IClipboard? Clipboard { get; internal set; }
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -57,7 +57,7 @@ public class App : Application
             var window = AppServiceProvider.GetRequiredService<MainWindow>();
             window.DataContext = viewModel;
             desktop.MainWindow = window;
-            
+
             VisualRoot = window;
             StorageProvider = window.StorageProvider;
             Clipboard = window.Clipboard ?? throw new NullReferenceException("Clipboard is null");
@@ -67,10 +67,10 @@ public class App : Application
             var view = AppServiceProvider.GetRequiredService<MainView>();
             view.DataContext = viewModel;
             singleView.MainView = view;
-            
+
             VisualRoot = view.Parent as MainWindow;
             StorageProvider = (view.Parent as MainWindow)?.StorageProvider;
-            Clipboard = (view.Parent as MainWindow)?.Clipboard?? throw new NullReferenceException("Clipboard is null");
+            Clipboard = (view.Parent as MainWindow)?.Clipboard ?? throw new NullReferenceException("Clipboard is null");
         }
 
         base.OnFrameworkInitializationCompleted();
