@@ -1,6 +1,15 @@
-<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:avconv="using:Avalonia.Controls.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
+            <avconv:CornerRadiusFilterConverter Filter="TopLeft, TopRight" x:Key="TopCornerRadiusFilterConverter" />
+            <avconv:CornerRadiusFilterConverter Filter="TopRight, BottomRight" x:Key="RightCornerRadiusFilterConverter" />
+            <avconv:CornerRadiusFilterConverter Filter="BottomLeft, BottomRight" x:Key="BottomCornerRadiusFilterConverter" />
+            <avconv:CornerRadiusFilterConverter Filter="TopLeft, BottomLeft" x:Key="LeftCornerRadiusFilterConverter" />
+            <CornerRadius x:Key="OverlayCornerRadius">8</CornerRadius>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://Deep.Ava/Styles/OptionsDisplayItem.axaml" />
             </ResourceDictionary.MergedDictionaries>

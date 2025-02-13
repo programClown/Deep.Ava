@@ -12,6 +12,6 @@
         <semi:SemiPopupAnimations />
         <u-semi:SemiTheme Locale="zh-CN" />
         <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
-        <StyleInclude Source="Styles/Index.axaml" />
+        <StyleInclude Source="avares://Deep.Ava/Styles/Index.axaml" />
     </Application.Styles>
 </Application>

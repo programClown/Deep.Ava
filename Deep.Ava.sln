@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Navigation", "Deep.Nav
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Navigation.Avaloniaui", "Deep.Navigation.Avaloniaui\Deep.Navigation.Avaloniaui.csproj", "{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Toolkit", "Deep.Toolkit\Deep.Toolkit.csproj", "{F50A032A-C512-487E-BA33-CB016A76991D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{096F9EEE-8546-4A63-B2EF-22A1D83C5A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50A032A-C512-487E-BA33-CB016A76991D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50A032A-C512-487E-BA33-CB016A76991D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50A032A-C512-487E-BA33-CB016A76991D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50A032A-C512-487E-BA33-CB016A76991D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

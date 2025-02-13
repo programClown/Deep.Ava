@@ -1,30 +1,138 @@
 <UserControl
-    x:Class="Deep.Ava.Views.SettingView"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ctrls="using:Deep.Ava.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Class="Deep.Ava.Views.SettingView"
+    x:DataType="vm:SettingViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ctrls="clr-namespace:Deep.Ava.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Margin="18" RowDefinitions="Auto,*">
         <TextBlock
+            Classes="H2"
             Margin="10,8"
-            Classes="H1"
             Text="设置"
             Theme="{StaticResource TitleTextBlock}" />
         <ScrollViewer Grid.Row="1" MinHeight="400">
-            <!-- <ctrls:OptionsDisplayItem Description="设置" Header="主题"> -->
-            <!--     <ctrls:OptionsDisplayItem.ActionButton> -->
-            <!--         <ComboBox MinWidth="250"> -->
-            <!--             <ComboBoxItem Content="Light" /> -->
-            <!--             <ComboBoxItem Content="Dark" /> -->
-            <!--             <ComboBoxItem Content="HighContrast" /> -->
-            <!--             <ComboBoxItem Content="FollowSystem" /> -->
-            <!--         </ComboBox> -->
-            <!--     </ctrls:OptionsDisplayItem.ActionButton> -->
-            <!-- </ctrls:OptionsDisplayItem> -->
+            <StackPanel
+                Margin="10,16,10,0"
+                Orientation="Vertical"
+                Spacing="4"
+                VerticalAlignment="Stretch">
+
+                <DockPanel Margin="0,0,0,16">
+                    <Image
+                        DockPanel.Dock="Left"
+                        Height="78"
+                        RenderOptions.BitmapInterpolationMode="HighQuality"
+                        Source="/Assets/logo.png"
+                        Width="78">
+                        <Image.Clip>
+                            <EllipseGeometry
+                                RadiusX="39"
+                                RadiusY="39"
+                                Rect="0,0,78,78" />
+                        </Image.Clip>
+                    </Image>
+
+                    <Button DockPanel.Dock="Right" VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal" Spacing="4">
+                            <ic:SymbolIcon Symbol="Copy" />
+                            <TextBlock Text="copy version info" />
+                        </StackPanel>
+                    </Button>
+
+                    <StackPanel
+                        Margin="12,0"
+                        Spacing="2"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            Classes="H5"
+                            Text="浅水蛙"
+                            Theme="{StaticResource TitleTextBlock}" />
+                        <TextBlock
+                            Classes="H6"
+                            Text="1.0"
+                            Theme="{StaticResource TitleTextBlock}" />
+                        <TextBlock Classes="Secondary" Text="git tag" />
+                    </StackPanel>
+                </DockPanel>
+
+                <ctrls:OptionsDisplayItem
+                    Description="主题"
+                    Header="选择一个您喜欢的主题"
+                    Icon="DarkTheme">
+
+                    <ctrls:OptionsDisplayItem.ActionButton>
+                        <ComboBox
+                            ItemsSource="{Binding ThemeVariants}"
+                            MinWidth="250"
+                            SelectedItem="{Binding SelectedThemeVariant}" />
+                    </ctrls:OptionsDisplayItem.ActionButton>
+                </ctrls:OptionsDisplayItem>
+
+                <ctrls:OptionsDisplayItem
+                    Expands="True"
+                    Header="友情链接"
+                    Icon="Link"
+                    IsExpanded="True">
+                    <ctrls:OptionsDisplayItem.Content>
+                        <Grid ColumnDefinitions="*,*" Margin="32,16">
+                            <StackPanel>
+                                <HyperlinkButton
+                                    Classes="WithIcon Underline"
+                                    Content="源码"
+                                    NavigateUri="https://github.com/programClown/Deep.Ava" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <HyperlinkButton Content="金庸传" NavigateUri="https://github.com/scarsty/kys-cpp" />
+                                <HyperlinkButton Content="无敌cccc" NavigateUri="https://github.com/scarsty/cccc-lite" />
+                            </StackPanel>
+                        </Grid>
+                    </ctrls:OptionsDisplayItem.Content>
+                </ctrls:OptionsDisplayItem>
+
+                <ctrls:OptionsDisplayItem
+                    Expands="True"
+                    Header="硬件信息"
+                    IsExpanded="True">
+                    <ctrls:OptionsDisplayItem.Icon>
+                        <ic:SymbolIcon Symbol="Desktop" />
+                    </ctrls:OptionsDisplayItem.Icon>
+                    <ctrls:OptionsDisplayItem.Content>
+                        <StackPanel Margin="32,16">
+                            <StackPanel.Styles>
+                                <Style Selector="TextBlock,SelectableTextBlock">
+                                    <Setter Property="Margin" Value="16,8" />
+                                </Style>
+                            </StackPanel.Styles>
+                            <Grid ColumnDefinitions="*,*">
+                                <TextBlock
+                                    Classes="H6"
+                                    Text="CPU信息"
+                                    Theme="{StaticResource TitleTextBlock}" />
+                                <SelectableTextBlock Grid.Column="1" Text="{Binding GlVersion}" />
+                            </Grid>
+                            <Grid RowDefinitions="Auto,Auto">
+                                <TextBlock
+                                    Classes="H6"
+                                    Text="显卡信息"
+                                    Theme="{StaticResource TitleTextBlock}" />
+                                <SelectableTextBlock
+                                    Grid.Row="1"
+                                    Margin="16,0"
+                                    Text="{Binding GpuDeviceDetail}"
+                                    TextWrapping="WrapWithOverflow" />
+                            </Grid>
+                        </StackPanel>
+                    </ctrls:OptionsDisplayItem.Content>
+                </ctrls:OptionsDisplayItem>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </UserControl>
