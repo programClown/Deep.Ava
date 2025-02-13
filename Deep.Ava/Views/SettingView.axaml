@@ -1,18 +1,30 @@
 <UserControl
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    mc:Ignorable="d"
     x:Class="Deep.Ava.Views.SettingView"
     xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctrls="using:Deep.Ava.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <Grid Margin="18" RowDefinitions="Auto,*">
         <TextBlock
-            Classes="H1"
             Margin="10,8"
+            Classes="H1"
             Text="设置"
             Theme="{StaticResource TitleTextBlock}" />
-        <ScrollViewer Grid.Row="1" />
+        <ScrollViewer Grid.Row="1" MinHeight="400">
+            <!-- <ctrls:OptionsDisplayItem Description="设置" Header="主题"> -->
+            <!--     <ctrls:OptionsDisplayItem.ActionButton> -->
+            <!--         <ComboBox MinWidth="250"> -->
+            <!--             <ComboBoxItem Content="Light" /> -->
+            <!--             <ComboBoxItem Content="Dark" /> -->
+            <!--             <ComboBoxItem Content="HighContrast" /> -->
+            <!--             <ComboBoxItem Content="FollowSystem" /> -->
+            <!--         </ComboBox> -->
+            <!--     </ctrls:OptionsDisplayItem.ActionButton> -->
+            <!-- </ctrls:OptionsDisplayItem> -->
+        </ScrollViewer>
     </Grid>
 </UserControl>

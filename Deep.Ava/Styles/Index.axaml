@@ -2,7 +2,7 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="OptionsDisplayItem.axaml" />
+                <ResourceInclude Source="avares://Deep.Ava/Styles/OptionsDisplayItem.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
