@@ -1,73 +1,73 @@
 <UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
     x:Class="Deep.Ava.Views.SciView"
+    x:DataType="vm:SciViewModel"
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:Deep.Ava.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:dc="clr-namespace:Deep.Controls.Controls;assembly=Deep.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    x:DataType="vm:SciViewModel"
-    mc:Ignorable="d">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
         <converters:IconNameToPathConverter x:Key="IconConverter" />
     </UserControl.Resources>
     <Grid ColumnDefinitions="Auto,*">
         <Border
-            Padding="0"
             HorizontalAlignment="Left"
+            Padding="0"
             Theme="{DynamicResource CardBorder}">
             <u:NavMenu
-                Name="menu"
                 ExpandWidth="200"
                 HeaderBinding="{Binding Header}"
                 IconBinding="{Binding IconIndex}"
                 ItemsSource="{Binding MenuItems}"
+                Name="menu"
                 SelectedItem="{Binding SelectedMenuItem}"
                 SubMenuBinding="{Binding Children}">
                 <u:NavMenu.Styles>
-                    <Style x:DataType="vm:MenuItem" Selector="u|NavMenuItem">
+                    <Style Selector="u|NavMenuItem" x:DataType="vm:MenuItem">
                         <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
                     </Style>
                 </u:NavMenu.Styles>
                 <u:NavMenu.IconTemplate>
                     <DataTemplate DataType="{x:Type x:Int32}">
                         <u:TwoTonePathIcon
-                            Width="16"
-                            Height="16"
                             ActiveForeground="{DynamicResource SemiBlue5}"
                             ActiveStrokeBrush="{DynamicResource SemiBlue5}"
                             Data="{Binding Converter={StaticResource IconConverter}}"
                             Foreground="{DynamicResource SemiGrey5}"
+                            Height="16"
                             IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
-                            StrokeBrush="{DynamicResource SemiGrey5}" />
+                            StrokeBrush="{DynamicResource SemiGrey5}"
+                            Width="16" />
                     </DataTemplate>
                 </u:NavMenu.IconTemplate>
                 <u:NavMenu.Header>
-                    <Grid HorizontalAlignment="Center" ColumnDefinitions="Auto, Auto">
+                    <Grid ColumnDefinitions="Auto, Auto" HorizontalAlignment="Center">
                         <Image
-                            Width="48"
                             Height="48"
                             Margin="4,12"
-                            u:NavMenu.CanToggle="True"
                             RenderOptions.BitmapInterpolationMode="HighQuality"
-                            Source="/Assets/logo.ico" />
+                            Source="/Assets/logo.ico"
+                            Width="48"
+                            u:NavMenu.CanToggle="True" />
                         <TextBlock
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
                             Classes="H5"
+                            Grid.Column="1"
                             IsVisible="{Binding !#menu.IsHorizontalCollapsed}"
                             Text="学以致用"
-                            Theme="{DynamicResource TitleTextBlock}" />
+                            Theme="{DynamicResource TitleTextBlock}"
+                            VerticalAlignment="Center" />
                     </Grid>
                 </u:NavMenu.Header>
                 <u:NavMenu.Footer>
                     <TextBlock
-                        Margin="12,0"
                         Classes="H1"
+                        Margin="12,0"
                         Text="© 2025"
                         Theme="{DynamicResource CaptionTextBlock}" />
                 </u:NavMenu.Footer>
@@ -75,24 +75,32 @@
         </Border>
 
         <Border Grid.Column="1" Theme="{DynamicResource CardBorder}">
-            <TabControl>
-                <TabItem>
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <ic:SymbolIcon Symbol="Copy" />
-                            <TextBlock Text="123">
-                            </TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                </TabItem>
-                <TabItem Content="Hello 2" Header="Tab 2" />
-                <TabItem Content="Hello 3" Header="Tab 3" />
-                <TabItem Content="中文内容" Header="中文中文" />
-                <TabItem
-                    Content="Hello 4"
-                    Header="Tab 4"
-                    IsEnabled="False" />
-            </TabControl>
+            <dc:TabsControl
+                FixedHeaderCount="1"
+                ItemsSource="{Binding TabItems}"
+                Margin="0,8,0,0"
+                NewItemFactory="{Binding NewItemFactory}"
+                ShowDefaultAddButton="True"
+                ShowDefaultCloseButton="True">
+                <TabControl.ContentTemplate>
+                    <DataTemplate DataType="vm:TabItemModel">
+
+                        <Grid Background="{DynamicResource SelectedTabItemBackgroundBrush}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="{Binding Content}"
+                                VerticalAlignment="Center" />
+                        </Grid>
+
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+
+                <TabControl.ItemTemplate>
+                    <DataTemplate DataType="vm:TabItemModel">
+                        <TextBlock Text="{Binding Header}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </dc:TabsControl>
         </Border>
     </Grid>
 </UserControl>

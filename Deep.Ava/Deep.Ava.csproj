@@ -33,6 +33,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Deep.Controls\Deep.Controls.csproj"/>
         <ProjectReference Include="..\Deep.Navigation.Avaloniaui\Deep.Navigation.Avaloniaui.csproj"/>
         <ProjectReference Include="..\Deep.Toolkit\Deep.Toolkit.csproj"/>
     </ItemGroup>

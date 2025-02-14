@@ -13,5 +13,6 @@
         <u-semi:SemiTheme Locale="zh-CN" />
         <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <StyleInclude Source="avares://Deep.Ava/Styles/Index.axaml" />
+        <StyleInclude Source="avares://Deep.Controls/Styles/Style.axaml" />
     </Application.Styles>
 </Application>

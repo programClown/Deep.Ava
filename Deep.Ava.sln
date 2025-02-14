@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Navigation.Avaloniaui"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Toolkit", "Deep.Toolkit\Deep.Toolkit.csproj", "{F50A032A-C512-487E-BA33-CB016A76991D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep.Controls", "Deep.Controls\Deep.Controls.csproj", "{3DBA5A4D-1F0A-4378-83AC-652756321E61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{F50A032A-C512-487E-BA33-CB016A76991D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F50A032A-C512-487E-BA33-CB016A76991D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F50A032A-C512-487E-BA33-CB016A76991D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DBA5A4D-1F0A-4378-83AC-652756321E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DBA5A4D-1F0A-4378-83AC-652756321E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DBA5A4D-1F0A-4378-83AC-652756321E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DBA5A4D-1F0A-4378-83AC-652756321E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

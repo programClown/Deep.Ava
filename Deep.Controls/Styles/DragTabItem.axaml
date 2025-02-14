@@ -1,0 +1,267 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:Deep.Controls.Controls"
+    xmlns:converters="clr-namespace:Deep.Controls.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <x:Double x:Key="TabItemMinHeight">48</x:Double>
+    <x:Double x:Key="TabItemVerticalPipeHeight">24</x:Double>
+    <x:Double x:Key="TabItemPipeThickness">2</x:Double>
+    <x:Double x:Key="TabItemHeaderFontSize">24</x:Double>
+    <Thickness x:Key="TabItemMargin">12,0,12,0</Thickness>
+    <FontWeight x:Key="TabItemHeaderThemeFontWeight">SemiLight</FontWeight>
+    <Thickness x:Key="TabItemHeaderMargin">12,0,12,0</Thickness>
+
+    <converters:ShowDefaultCloseButtonConverter x:Key="ShowDefaultCloseButtonConverter" />
+
+    <ControlTheme TargetType="Button" x:Key="CloseItemCommandButton">
+        <Setter Property="Content">
+            <Template>
+                <Viewbox
+                    Height="16"
+                    Stretch="Uniform"
+                    Width="16">
+                    <Canvas Height="24" Width="24">
+                        <Path Data="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" Fill="{Binding $parent[Button].Foreground}" />
+                    </Canvas>
+                </Viewbox>
+            </Template>
+        </Setter>
+        <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultPrimaryForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ButtonCornerRadius}" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="RenderTransform" Value="none" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Duration="0:0:.075" Property="RenderTransform" />
+            </Transitions>
+        </Setter>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Foreground="{TemplateBinding Foreground}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Padding="{TemplateBinding Padding}"
+                    RecognizesAccessKey="True"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    x:Name="PART_ContentPresenter" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonDefaultPointeroverBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultPointeroverBorderBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerPointeroverForeground}" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.98)" />
+        </Style>
+
+        <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonDefaultPressedBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultPressedBorderBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerPressedForeground}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonBorderlessBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderlessBorderBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultDisabledForeground}" />
+        </Style>
+
+        <Style Selector="^.accent">
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource ButtonSolidPrimaryBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidPrimaryBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidForeground}" />
+            </Style>
+
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource ButtonSolidPrimaryPointeroverBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidPrimaryPointeroverBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidForeground}" />
+            </Style>
+
+            <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource ButtonSolidPrimaryPressedBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidPrimaryPressedBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidPrimaryPressedForeground}" />
+            </Style>
+
+            <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource ButtonSolidDisabledBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidDisabledBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidDisabledForeground}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="controls:LeftPressedThumb" x:Key="DragTabItemThumb">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="IsHitTestVisible" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="controls:DragTabItem" x:Key="{x:Type controls:DragTabItem}">
+        <Setter Property="FontSize" Value="{DynamicResource TabItemHeaderFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource TabItemHeaderThemeFontWeight}" />
+        <Setter Property="Background" Value="{DynamicResource TabItemLinePipeBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TabItemLineHeaderForeground}" />
+        <Setter Property="Padding" Value="{DynamicResource TabItemHeaderMargin}" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinHeight" Value="{DynamicResource TabItemMinHeight}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="PART_LayoutRoot"
+                    Padding="{TemplateBinding Padding}">
+                    <Panel>
+                        <Grid ColumnDefinitions="* Auto">
+                            <ContentPresenter
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                FontWeight="{TemplateBinding FontWeight}"
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Name="PART_ContentPresenter"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                            <controls:LeftPressedThumb
+                                Grid.Column="0"
+                                Name="PART_Thumb"
+                                Theme="{StaticResource DragTabItemThumb}" />
+
+                            <Button
+                                Command="{Binding $parent[controls:TabsControl].CloseItemCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                Grid.Column="1"
+                                Theme="{StaticResource CloseItemCommandButton}">
+
+                                <Button.IsVisible>
+                                    <MultiBinding Converter="{StaticResource ShowDefaultCloseButtonConverter}">
+                                        <Binding Path="ShowDefaultCloseButton" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type controls:TabsControl}}" />
+                                        <Binding Path="FixedHeaderCount" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type controls:TabsControl}}" />
+                                        <Binding Path="LogicalIndex" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    </MultiBinding>
+                                </Button.IsVisible>
+
+                            </Button>
+
+                        </Grid>
+
+                        <Border
+                            Background="{DynamicResource TabItemLinePipeSelectedBackground}"
+                            CornerRadius="{DynamicResource RadiusCardCornerRadius}"
+                            IsVisible="False"
+                            Name="PART_SelectedPipe" />
+
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!--  Selected state  -->
+        <!--  We don't use selector to PART_LayoutRoot, so developer can override selected item background with TabStripItem.Background  -->
+        <Style Selector="^:selected">
+            <Setter Property="Background" Value="{DynamicResource TabItemLinePipeSelectedBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource TabItemHeaderForegroundSelected}" />
+        </Style>
+        <Style Selector="^:selected /template/ Border#PART_SelectedPipe">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <!--  PointerOver state  -->
+        <Style Selector="^:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{DynamicResource TabItemHeaderBackgroundUnselectedPointerOver}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TabItemHeaderForegroundUnselectedPointerOver}" />
+        </Style>
+
+        <!--  Selected PointerOver state  -->
+        <Style Selector="^:selected:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{DynamicResource TabItemHeaderBackgroundSelectedPointerOver}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TabItemHeaderForegroundSelectedPointerOver}" />
+        </Style>
+
+        <!--  Pressed state  -->
+        <Style Selector="^:pressed /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{DynamicResource TabItemHeaderBackgroundUnselectedPressed}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TabItemHeaderForegroundUnselectedPressed}" />
+        </Style>
+
+        <!--  Selected Pressed state  -->
+        <Style Selector="^:selected:pressed /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{DynamicResource TabItemHeaderBackgroundSelectedPressed}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TabItemHeaderForegroundSelectedPressed}" />
+        </Style>
+
+        <!--  Disabled state  -->
+        <Style Selector="^:disabled /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{DynamicResource TabItemHeaderBackgroundDisabled}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TabItemHeaderForegroundDisabled}" />
+        </Style>
+
+        <!--  TabStripPlacement States Group  -->
+        <Style Selector="^[TabStripPlacement=Left] /template/ Border#PART_SelectedPipe">
+            <Setter Property="Width" Value="{DynamicResource TabItemPipeThickness}" />
+            <Setter Property="Height" Value="{DynamicResource TabItemVerticalPipeHeight}" />
+            <Setter Property="Margin" Value="0,0,2,0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Left] /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Margin" Value="8,0,0,0" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Top] /template/ Border#PART_SelectedPipe, ^[TabStripPlacement=Bottom] /template/ Border#PART_SelectedPipe">
+            <Setter Property="Height" Value="{DynamicResource TabItemPipeThickness}" />
+            <Setter Property="Margin" Value="0,0,0,2" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Right] /template/ Border#PART_SelectedPipe">
+            <Setter Property="Width" Value="{DynamicResource TabItemPipeThickness}" />
+            <Setter Property="Height" Value="{DynamicResource TabItemVerticalPipeHeight}" />
+            <Setter Property="Margin" Value="2,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Margin" Value="0,0,8,0" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right]">
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+        </Style>
+
+    </ControlTheme>
+</ResourceDictionary>

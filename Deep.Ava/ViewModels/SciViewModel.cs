@@ -12,12 +12,15 @@ namespace Deep.Ava.ViewModels;
 public partial class SciViewModel : ViewModelBase
 {
     [ObservableProperty] private MenuItem? _selectedMenuItem;
+    public Func<object> NewItemFactory => AddItem;
 
-    public ObservableCollection<string> TabItems { get; set; } = new()
+    public ObservableCollection<TabItemModel> TabItems { get; set; } = new()
     {
-        "魔鬼斤肉人", "咸蛋超人", "大西瓜",
+        new TabItemModel("Tab 1", "This is the content of Tab 1."),
+        new TabItemModel("Tab 2", "This is the content of Tab 2."),
+        new TabItemModel("Tab 3", "This is the content of Tab 3.")
     };
-    
+
     public ObservableCollection<MenuItem> MenuItems { get; set; } = new()
     {
         new MenuItem { Header = "Introduction" },
@@ -30,6 +33,13 @@ public partial class SciViewModel : ViewModelBase
         new MenuItem { Header = "Divider" },
         new MenuItem { Header = "Drawer" }
     };
+
+    private object AddItem()
+    {
+        return new TabItemModel("Tab new",
+                "Tab content")
+            ;
+    }
 
     private List<MenuItem> GetLeaves()
     {
@@ -76,4 +86,10 @@ public class MenuItem
             foreach (var item in items) yield return item;
         }
     }
+}
+
+public class TabItemModel(string header, string content)
+{
+    public string Header { get; set; } = header;
+    public string Content { get; set; } = content;
 }
