@@ -1,108 +1,14 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:controls="clr-namespace:Deep.Controls.Controls"
+    xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
     xmlns:panels="clr-namespace:Deep.Controls.Panels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Thickness x:Key="TabControlTopPlacementItemMargin">0 0 0 2</Thickness>
 
-    <ControlTheme TargetType="Button" x:Key="AddItemCommandButton">
-        <Setter Property="Content">
-            <Template>
-                <Viewbox
-                    Height="20"
-                    Stretch="Uniform"
-                    Width="20">
-                    <Canvas Height="24" Width="24">
-                        <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="{Binding $parent[Button].Foreground}" />
-                    </Canvas>
-                </Viewbox>
-            </Template>
-        </Setter>
-        <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-        <Setter Property="Padding" Value="{DynamicResource ButtonPadding}" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="RenderTransform" Value="none" />
-        <Setter Property="Transitions">
-            <Transitions>
-                <TransformOperationsTransition Duration="0:0:.075" Property="RenderTransform" />
-            </Transitions>
-        </Setter>
-
-        <Setter Property="Template">
-            <ControlTemplate>
-                <ContentPresenter
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Content="{TemplateBinding Content}"
-                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    Foreground="{TemplateBinding Foreground}"
-                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Padding="{TemplateBinding Padding}"
-                    RecognizesAccessKey="True"
-                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                    x:Name="PART_ContentPresenter" />
-            </ControlTemplate>
-        </Setter>
-
-        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
-            <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
-        </Style>
-
-        <Style Selector="^:pressed">
-            <Setter Property="RenderTransform" Value="scale(0.98)" />
-        </Style>
-
-        <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
-            <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
-        </Style>
-
-        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
-            <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
-        </Style>
-
-        <Style Selector="^.accent">
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource AccentButtonBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForeground}" />
-            </Style>
-
-            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPointerOver}" />
-                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPointerOver}" />
-            </Style>
-
-            <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPressed}" />
-                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPressed}" />
-            </Style>
-
-            <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundDisabled}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushDisabled}" />
-                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundDisabled}" />
-            </Style>
-        </Style>
-    </ControlTheme>
-
     <ControlTheme TargetType="controls:TabsControl" x:Key="{x:Type controls:TabsControl}">
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="{DynamicResource TabItemMargin}" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="{DynamicResource TabControlBackground}" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -127,9 +33,19 @@
                             <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
 
                             <Button
+                                Classes="Primary"
                                 Command="{Binding AddItemCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                Height="32"
                                 IsVisible="{TemplateBinding ShowDefaultAddButton}"
-                                Theme="{StaticResource AddItemCommandButton}" />
+                                Theme="{DynamicResource BorderlessButton}"
+                                Width="32">
+                                <ic:SymbolIcon
+                                    FontSize="24"
+                                    Height="24"
+                                    IconVariant="Regular"
+                                    Symbol="AddSquare"
+                                    Width="24" />
+                            </Button>
 
                             <Thumb MinWidth="{TemplateBinding RightThumbWidth}" Name="PART_RightDragWindowThumb" />
 
@@ -153,8 +69,29 @@
         <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter &gt; WrapPanel">
             <Setter Property="Orientation" Value="Vertical" />
         </Style>
-        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
-            <Setter Property="Margin" Value="{DynamicResource TabControlTopPlacementItemMargin}" />
+        <Style Selector="^[TabStripPlacement=Left] /template/ Border#PART_BorderSeparator">
+            <Setter Property="Width" Value="1" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ Border#PART_BorderSeparator">
+            <Setter Property="Width" Value="1" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Top] /template/ Border#PART_BorderSeparator">
+            <Setter Property="Height" Value="1" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Bottom] /template/ Border#PART_BorderSeparator">
+            <Setter Property="Height" Value="1" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+
+        <!-- <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter"> -->
+        <!--     <Setter Property="Margin" Value="8" /> -->
+        <!-- </Style> -->
     </ControlTheme>
 </ResourceDictionary>

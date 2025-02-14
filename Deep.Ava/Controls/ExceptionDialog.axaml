@@ -1,34 +1,34 @@
 <UserControl
-    x:Class="Deep.Ava.Controls.ExceptionDialog"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
     Width="800"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Deep.Ava.Controls.ExceptionDialog"
     x:DataType="vm:ExceptionDialogViewModel"
-    mc:Ignorable="d">
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid RowDefinitions="auto,*,auto">
         <Grid Grid.Row="1" RowDefinitions="auto,*,auto">
             <!--  Info  -->
             <TextBlock
                 Grid.Row="0"
                 Margin="16"
-                VerticalAlignment="Top"
                 Text="程序发生异常"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap"
+                VerticalAlignment="Top" />
 
             <!--  Exception details  -->
             <DockPanel Grid.Row="1">
                 <Expander
+                    Header="{Binding ExceptionType, Mode=OneWay, TargetNullValue=-, FallbackValue=Unknown Exception}"
+                    IsExpanded="True"
                     Margin="16,0,16,0"
                     Padding="12,12,12,12"
-                    VerticalAlignment="Top"
-                    Header="{Binding ExceptionType, Mode=OneWay, TargetNullValue=-, FallbackValue=Unknown Exception}"
-                    IsExpanded="True">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    VerticalAlignment="Top">
+                    <ScrollViewer MaxHeight="600" VerticalScrollBarVisibility="Auto">
                         <StackPanel DataContext="{Binding Exception}" Spacing="4">
                             <!--  Exception Message  -->
                             <TextBlock Text="详细信息" />
@@ -67,15 +67,15 @@
 
             <StackPanel
                 Grid.Row="2"
-                Margin="16"
                 HorizontalAlignment="Right"
+                Margin="16"
                 Orientation="Horizontal"
                 Spacing="12">
                 <!--  Copy Button  -->
                 <Button
+                    Click="CopyButton_OnClick"
                     Name="CopyButton"
-                    Padding="12,8"
-                    Click="CopyButton_OnClick">
+                    Padding="12,8">
                     <StackPanel Orientation="Horizontal" Spacing="6">
                         <!--  <fluentIcons:SymbolIcon  -->
                         <!--  Margin="0,1,0,0"  -->

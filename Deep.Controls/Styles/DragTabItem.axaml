@@ -13,101 +13,6 @@
 
     <converters:ShowDefaultCloseButtonConverter x:Key="ShowDefaultCloseButtonConverter" />
 
-    <ControlTheme TargetType="Button" x:Key="CloseItemCommandButton">
-        <Setter Property="Content">
-            <Template>
-                <Viewbox
-                    Height="16"
-                    Stretch="Uniform"
-                    Width="16">
-                    <Canvas Height="24" Width="24">
-                        <Path Data="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" Fill="{Binding $parent[Button].Foreground}" />
-                    </Canvas>
-                </Viewbox>
-            </Template>
-        </Setter>
-        <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultPrimaryForeground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ButtonCornerRadius}" />
-        <Setter Property="Padding" Value="2" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="RenderTransform" Value="none" />
-        <Setter Property="Transitions">
-            <Transitions>
-                <TransformOperationsTransition Duration="0:0:.075" Property="RenderTransform" />
-            </Transitions>
-        </Setter>
-
-        <Setter Property="Template">
-            <ControlTemplate>
-                <ContentPresenter
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Content="{TemplateBinding Content}"
-                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    Foreground="{TemplateBinding Foreground}"
-                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Padding="{TemplateBinding Padding}"
-                    RecognizesAccessKey="True"
-                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                    x:Name="PART_ContentPresenter" />
-            </ControlTemplate>
-        </Setter>
-
-        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ButtonDefaultPointeroverBackground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultPointeroverBorderBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerPointeroverForeground}" />
-        </Style>
-
-        <Style Selector="^:pressed">
-            <Setter Property="RenderTransform" Value="scale(0.98)" />
-        </Style>
-
-        <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ButtonDefaultPressedBackground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultPressedBorderBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerPressedForeground}" />
-        </Style>
-
-        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ButtonBorderlessBackground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderlessBorderBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultDisabledForeground}" />
-        </Style>
-
-        <Style Selector="^.accent">
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource ButtonSolidPrimaryBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidPrimaryBorderBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidForeground}" />
-            </Style>
-
-            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource ButtonSolidPrimaryPointeroverBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidPrimaryPointeroverBorderBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidForeground}" />
-            </Style>
-
-            <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource ButtonSolidPrimaryPressedBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidPrimaryPressedBorderBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidPrimaryPressedForeground}" />
-            </Style>
-
-            <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource ButtonSolidDisabledBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonSolidDisabledBorderBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource ButtonSolidDisabledForeground}" />
-            </Style>
-        </Style>
-    </ControlTheme>
-
     <ControlTheme TargetType="controls:LeftPressedThumb" x:Key="DragTabItemThumb">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
@@ -162,11 +67,19 @@
                                 Theme="{StaticResource DragTabItemThumb}" />
 
                             <Button
+                                Classes="Tertiary"
                                 Command="{Binding $parent[controls:TabsControl].CloseItemCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Grid.Column="1"
-                                Theme="{StaticResource CloseItemCommandButton}">
-
+                                Theme="{DynamicResource BorderlessButton}">
+                                <Viewbox
+                                    Height="16"
+                                    Stretch="Uniform"
+                                    Width="16">
+                                    <Canvas Height="24" Width="24">
+                                        <Path Data="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" Fill="{Binding $parent[Button].Foreground}" />
+                                    </Canvas>
+                                </Viewbox>
                                 <Button.IsVisible>
                                     <MultiBinding Converter="{StaticResource ShowDefaultCloseButtonConverter}">
                                         <Binding Path="ShowDefaultCloseButton" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type controls:TabsControl}}" />
