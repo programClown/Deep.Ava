@@ -8,7 +8,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
-using FluentIcons.Avalonia.Fluent;
+using Material.Icons.Avalonia;
 
 namespace Deep.Ava.Controls;
 
@@ -21,8 +21,8 @@ public class OptionsDisplayItem : TemplatedControl
     public static readonly StyledProperty<object> DescriptionProperty =
         AvaloniaProperty.Register<OptionsDisplayItem, object>(nameof(Description));
 
-    public static readonly StyledProperty<SymbolIcon> IconProperty =
-        AvaloniaProperty.Register<OptionsDisplayItem, SymbolIcon>(nameof(Icon));
+    public static readonly StyledProperty<MaterialIcon> IconProperty =
+        AvaloniaProperty.Register<OptionsDisplayItem, MaterialIcon>(nameof(Icon));
 
     public static readonly StyledProperty<bool> NavigatesProperty =
         AvaloniaProperty.Register<OptionsDisplayItem, bool>(nameof(Navigates));
@@ -76,7 +76,7 @@ public class OptionsDisplayItem : TemplatedControl
         set => SetValue(DescriptionProperty, value);
     }
 
-    public SymbolIcon Icon
+    public MaterialIcon Icon
     {
         get => GetValue(IconProperty);
         set => SetValue(IconProperty, value);

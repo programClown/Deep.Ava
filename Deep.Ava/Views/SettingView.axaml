@@ -1,36 +1,36 @@
 <UserControl
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    mc:Ignorable="d"
     x:Class="Deep.Ava.Views.SettingView"
-    x:DataType="vm:SettingViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ctrls="clr-namespace:Deep.Ava.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mic="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
     xmlns:vm="clr-namespace:Deep.Ava.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:SettingViewModel"
+    mc:Ignorable="d">
     <Grid Margin="18" RowDefinitions="Auto,*">
         <TextBlock
-            Classes="H2"
             Margin="10,8"
+            Classes="H2"
             Text="设置"
             Theme="{StaticResource TitleTextBlock}" />
         <ScrollViewer Grid.Row="1" MinHeight="400">
             <StackPanel
                 Margin="10,16,10,0"
+                VerticalAlignment="Stretch"
                 Orientation="Vertical"
-                Spacing="4"
-                VerticalAlignment="Stretch">
+                Spacing="4">
 
                 <DockPanel Margin="0,0,0,16">
                     <Image
-                        DockPanel.Dock="Left"
+                        Width="78"
                         Height="78"
+                        DockPanel.Dock="Left"
                         RenderOptions.BitmapInterpolationMode="HighQuality"
-                        Source="/Assets/logo.png"
-                        Width="78">
+                        Source="/Assets/logo.png">
                         <Image.Clip>
                             <EllipseGeometry
                                 RadiusX="39"
@@ -39,17 +39,17 @@
                         </Image.Clip>
                     </Image>
 
-                    <Button DockPanel.Dock="Right" VerticalAlignment="Bottom">
+                    <Button VerticalAlignment="Bottom" DockPanel.Dock="Right">
                         <StackPanel Orientation="Horizontal" Spacing="4">
-                            <ic:SymbolIcon Symbol="Copy" />
+                            <mic:MaterialIcon Kind="ContentCopy" />
                             <TextBlock Text="copy version info" />
                         </StackPanel>
                     </Button>
 
                     <StackPanel
                         Margin="12,0"
-                        Spacing="2"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Spacing="2">
                         <TextBlock
                             Classes="H5"
                             Text="浅水蛙"
@@ -62,15 +62,14 @@
                     </StackPanel>
                 </DockPanel>
 
-                <ctrls:OptionsDisplayItem
-                    Description="主题"
-                    Header="选择一个您喜欢的主题"
-                    Icon="DarkTheme">
-
+                <ctrls:OptionsDisplayItem Description="主题" Header="选择一个您喜欢的主题">
+                    <ctrls:OptionsDisplayItem.Icon>
+                        <mic:MaterialIcon Kind="ThemeLightDark" />
+                    </ctrls:OptionsDisplayItem.Icon>
                     <ctrls:OptionsDisplayItem.ActionButton>
                         <ComboBox
-                            ItemsSource="{Binding ThemeVariants}"
                             MinWidth="250"
+                            ItemsSource="{Binding ThemeVariants}"
                             SelectedItem="{Binding SelectedThemeVariant}" />
                     </ctrls:OptionsDisplayItem.ActionButton>
                 </ctrls:OptionsDisplayItem>
@@ -78,10 +77,12 @@
                 <ctrls:OptionsDisplayItem
                     Expands="True"
                     Header="友情链接"
-                    Icon="Link"
                     IsExpanded="True">
+                    <ctrls:OptionsDisplayItem.Icon>
+                        <mic:MaterialIcon Kind="Link" />
+                    </ctrls:OptionsDisplayItem.Icon>
                     <ctrls:OptionsDisplayItem.Content>
-                        <Grid ColumnDefinitions="*,*" Margin="32,16">
+                        <Grid Margin="32,16" ColumnDefinitions="*,*">
                             <StackPanel>
                                 <HyperlinkButton
                                     Classes="WithIcon Underline"
@@ -102,7 +103,7 @@
                     Header="硬件信息"
                     IsExpanded="True">
                     <ctrls:OptionsDisplayItem.Icon>
-                        <ic:SymbolIcon Symbol="Desktop" />
+                        <mic:MaterialIcon Kind="DeveloperBoard" />
                     </ctrls:OptionsDisplayItem.Icon>
                     <ctrls:OptionsDisplayItem.Content>
                         <StackPanel Margin="32,16">

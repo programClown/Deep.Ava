@@ -1,63 +1,62 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Deep.Controls.Controls"
-    xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-    xmlns:panels="clr-namespace:Deep.Controls.Panels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:mic="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:panels="clr-namespace:Deep.Controls.Panels">
     <Thickness x:Key="TabControlTopPlacementItemMargin">0 0 0 2</Thickness>
 
-    <ControlTheme TargetType="controls:TabsControl" x:Key="{x:Type controls:TabsControl}">
+    <ControlTheme x:Key="{x:Type controls:TabsControl}" TargetType="controls:TabsControl">
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="{DynamicResource TabControlBackground}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                    VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    CornerRadius="{TemplateBinding CornerRadius}">
                     <DockPanel>
 
                         <panels:TopPanel
-                            Background="{TemplateBinding Background}"
-                            DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                            Name="PART_TopPanel"
                             HorizontalAlignment="Stretch"
-                            Name="PART_TopPanel">
+                            Background="{TemplateBinding Background}"
+                            DockPanel.Dock="{TemplateBinding TabStripPlacement}">
 
-                            <Thumb MinWidth="{TemplateBinding LeftThumbWidth}" Name="PART_LeftDragWindowThumb" />
+                            <Thumb Name="PART_LeftDragWindowThumb" MinWidth="{TemplateBinding LeftThumbWidth}" />
 
 
-                            <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
+                            <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
 
                             <Button
+                                Width="32"
+                                Height="32"
                                 Classes="Primary"
                                 Command="{Binding AddItemCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                Height="32"
                                 IsVisible="{TemplateBinding ShowDefaultAddButton}"
-                                Theme="{DynamicResource BorderlessButton}"
-                                Width="32">
-                                <ic:SymbolIcon
-                                    FontSize="24"
-                                    Height="24"
-                                    IconVariant="Regular"
-                                    Symbol="AddSquare"
-                                    Width="24" />
+                                Theme="{DynamicResource BorderlessButton}">
+                                <mic:MaterialIcon
+                                    Width="32"
+                                    Height="32"
+                                    FontSize="20"
+                                    Kind="AddBox" />
                             </Button>
 
-                            <Thumb MinWidth="{TemplateBinding RightThumbWidth}" Name="PART_RightDragWindowThumb" />
+                            <Thumb Name="PART_RightDragWindowThumb" MinWidth="{TemplateBinding RightThumbWidth}" />
 
                         </panels:TopPanel>
 
                         <ContentPresenter
-                            Content="{TemplateBinding SelectedContent}"
-                            ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Margin="{TemplateBinding Padding}"
                             Name="PART_SelectedContentHost"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding SelectedContent}"
+                            ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
                     </DockPanel>
                 </Border>
             </ControlTemplate>

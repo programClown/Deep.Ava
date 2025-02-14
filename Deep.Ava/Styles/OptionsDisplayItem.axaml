@@ -1,8 +1,8 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:ic="using:FluentIcons.Avalonia.Fluent"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Deep.Ava.Controls"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:mic="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
     <Design.PreviewWith>
         <Border MinHeight="300" Padding="20">
             <StackPanel>
@@ -39,7 +39,7 @@
         </Border>
     </Design.PreviewWith>
 
-    <ControlTheme TargetType="local:OptionsDisplayItem" x:Key="{x:Type local:OptionsDisplayItem}">
+    <ControlTheme x:Key="{x:Type local:OptionsDisplayItem}" TargetType="local:OptionsDisplayItem">
         <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BorderCardBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ThicknessCardBorderThickness}" />
@@ -54,19 +54,19 @@
             <ControlTemplate>
                 <StackPanel>
                     <Border
+                        Name="LayoutRoot"
+                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Name="LayoutRoot"
-                        Padding="{TemplateBinding Padding}">
+                        CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid ColumnDefinitions="Auto,*,Auto,Auto">
                             <Viewbox
-                                Grid.RowSpan="2"
-                                Height="24"
-                                Margin="8,4,12,4"
                                 Name="IconHost"
-                                Width="24">
+                                Grid.RowSpan="2"
+                                Width="24"
+                                Height="24"
+                                Margin="8,4,12,4">
                                 <ContentPresenter Content="{TemplateBinding Icon}" />
                             </Viewbox>
 
@@ -76,19 +76,19 @@
                                 VerticalAlignment="Center">
 
                                 <ContentPresenter
+                                    HorizontalAlignment="Stretch"
                                     Content="{TemplateBinding Header}"
                                     FontSize="14"
                                     FontWeight="Normal"
-                                    HorizontalAlignment="Stretch"
                                     TextTrimming="CharacterEllipsis"
                                     TextWrapping="Wrap" />
 
                                 <ContentPresenter
+                                    HorizontalAlignment="Stretch"
                                     Content="{TemplateBinding Description}"
                                     FontSize="12"
                                     FontWeight="Normal"
                                     Foreground="{DynamicResource TextBlockSecondaryForeground}"
-                                    HorizontalAlignment="Stretch"
                                     IsVisible="{TemplateBinding Description,
                                                                 Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                                     TextTrimming="CharacterEllipsis"
@@ -96,37 +96,33 @@
                             </StackPanel>
 
                             <ContentPresenter
-                                Content="{TemplateBinding ActionButton}"
                                 Grid.Column="2"
-                                HorizontalAlignment="Right"
                                 Margin="8,4"
-                                VerticalAlignment="Stretch" />
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Content="{TemplateBinding ActionButton}" />
 
                             <Border
-                                CornerRadius="{DynamicResource RadiusCardCornerRadius}"
+                                Name="ChevronBorder"
                                 Grid.Column="3"
                                 Margin="4,0"
-                                Name="ChevronBorder"
-                                VerticalAlignment="Center">
+                                VerticalAlignment="Center"
+                                CornerRadius="{DynamicResource RadiusCardCornerRadius}">
 
-                                <ic:SymbolIcon
-                                    FontSize="20"
-                                    IconVariant="Regular"
-                                    Margin="4,4"
-                                    Name="Chevron" />
+                                <mic:MaterialIcon Name="Chevron" FontSize="20" />
                             </Border>
                         </Grid>
                     </Border>
 
                     <ContentPresenter
+                        Name="ExpandedContentPresenter"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1,0,1,1"
-                        Content="{TemplateBinding Content}"
-                        HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Stretch"
-                        Name="ExpandedContentPresenter"
-                        VerticalAlignment="Stretch"
-                        VerticalContentAlignment="Stretch" />
+                        Content="{TemplateBinding Content}" />
                 </StackPanel>
 
             </ControlTemplate>
@@ -135,7 +131,7 @@
         <Style Selector="^ /template/ Viewbox#IconHost">
             <Setter Property="IsVisible" Value="False" />
         </Style>
-        <Style Selector="^ /template/ ic|SymbolIcon#Chevron">
+        <Style Selector="^ /template/ mic|MaterialIcon#Chevron">
             <Setter Property="IsVisible" Value="False" />
         </Style>
         <Style Selector="^ /template/ ContentPresenter#ExpandedContentPresenter">
@@ -146,7 +142,7 @@
         <Style Selector="^ /template/ Border#LayoutRoot">
             <Setter Property="Transitions">
                 <Transitions>
-                    <BrushTransition Duration="00:00:00.083" Property="Background" />
+                    <BrushTransition Property="Background" Duration="00:00:00.083" />
                 </Transitions>
             </Setter>
         </Style>
@@ -160,9 +156,9 @@
         </Style>
 
         <Style Selector="^:navigates">
-            <Style Selector="^ /template/ ic|SymbolIcon#Chevron">
+            <Style Selector="^ /template/ mic|MaterialIcon#Chevron">
                 <Setter Property="IsVisible" Value="True" />
-                <Setter Property="Symbol" Value="ChevronRight" />
+                <Setter Property="Kind" Value="ChevronRight" />
             </Style>
         </Style>
 
@@ -171,20 +167,20 @@
         </Style>
 
         <Style Selector="^:expands">
-            <Style Selector="^ /template/ ic|SymbolIcon#Chevron">
+            <Style Selector="^ /template/ mic|MaterialIcon#Chevron">
                 <Setter Property="IsVisible" Value="True" />
-                <Setter Property="Symbol" Value="ChevronDown" />
+                <Setter Property="Kind" Value="ChevronDown" />
                 <Setter Property="RenderTransform" Value="rotate(0deg)" />
                 <Setter Property="Transitions">
                     <Transitions>
-                        <TransformOperationsTransition Duration="00:00:00.167" Property="RenderTransform" />
+                        <TransformOperationsTransition Property="RenderTransform" Duration="00:00:00.167" />
                     </Transitions>
                 </Setter>
             </Style>
         </Style>
 
         <Style Selector="^:expanded">
-            <Style Selector="^ /template/ ic|SymbolIcon#Chevron">
+            <Style Selector="^ /template/ mic|MaterialIcon#Chevron">
                 <!--<Setter Property="Symbol" Value="ChevronUp" />-->
                 <Setter Property="RenderTransform" Value="rotate(180deg)" />
             </Style>
@@ -206,20 +202,20 @@
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border
+                        Name="LayoutRoot"
+                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Name="LayoutRoot"
-                        Padding="{TemplateBinding Padding}">
+                        CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid RowDefinitions="*,*">
                             <Border
-                                Background="Transparent"
-                                ClipToBounds="True"
-                                CornerRadius="{StaticResource OverlayCornerRadius}"
+                                Width="72"
                                 Height="72"
                                 Margin="18"
-                                Width="72">
+                                Background="Transparent"
+                                ClipToBounds="True"
+                                CornerRadius="{StaticResource OverlayCornerRadius}">
                                 <Viewbox Name="IconHost">
                                     <ContentPresenter Content="{TemplateBinding Icon}" />
                                 </Viewbox>
@@ -227,20 +223,20 @@
 
                             <StackPanel Grid.Row="1" HorizontalAlignment="Stretch">
                                 <ContentPresenter
+                                    Margin="0,5"
+                                    HorizontalAlignment="Stretch"
                                     Content="{TemplateBinding Header}"
                                     FontSize="14"
                                     FontWeight="Normal"
-                                    HorizontalAlignment="Stretch"
-                                    Margin="0,5"
                                     TextTrimming="CharacterEllipsis"
                                     TextWrapping="Wrap" />
 
                                 <ContentPresenter
+                                    HorizontalAlignment="Stretch"
                                     Content="{TemplateBinding Description}"
                                     FontSize="12"
                                     FontWeight="Normal"
                                     Foreground="{DynamicResource TextBoxForeground}"
-                                    HorizontalAlignment="Stretch"
                                     IsVisible="{TemplateBinding Description,
                                                                 Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                                     TextTrimming="CharacterEllipsis"
