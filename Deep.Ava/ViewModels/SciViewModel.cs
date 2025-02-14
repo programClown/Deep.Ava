@@ -13,7 +13,11 @@ public partial class SciViewModel : ViewModelBase
 {
     [ObservableProperty] private MenuItem? _selectedMenuItem;
 
-
+    public ObservableCollection<string> TabItems { get; set; } = new()
+    {
+        "魔鬼斤肉人", "咸蛋超人", "大西瓜",
+    };
+    
     public ObservableCollection<MenuItem> MenuItems { get; set; } = new()
     {
         new MenuItem { Header = "Introduction" },
